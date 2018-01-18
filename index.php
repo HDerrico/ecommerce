@@ -1,19 +1,30 @@
 <?php 
 
+//Carrega as dependencias 
 require_once("vendor/autoload.php");
 
-$app = new \Slim\Slim();
+//Classes dentro de vendor necessarias nesse arquivo
+use \Slim\Slim;
+use \Hcode\Page;
+
+//Gerenciamento de Rotas
+$app = new Slim();
 
 $app->config('debug', true);
 
+//Quando chamarem via GET essa rota executa a seguinte função
 $app->get('/', function() {
-    
-	$sql = new Hcode\DB\Sql();
-	$results = $sql->select("SELECT * FROM tb_users");
-	echo json_encode($results);
 
+	//Cria uma nova pagina com header
+    $page = new Page();
+
+    //Carrega conteudo dentro de um arquivo html
+    $page->setTpl("index");
+
+    //__Destruct finaliza inserindo o footer
 });
 
+//Coloca a função acima em pratica
 $app->run();
 
  ?>
