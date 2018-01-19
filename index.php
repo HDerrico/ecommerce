@@ -39,6 +39,17 @@ $app->get('/admin', function() {
 });
 
 
+$app->get('/admin/login', function(){
+
+    $page = new PageAdmin([
+        "header"=>false,
+        "footer"=>false
+    ]);
+
+    $page->setTpl("login");
+});
+
+
 //Coloca a função acima em pratica
 $app->run();
 
